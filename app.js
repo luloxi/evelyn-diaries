@@ -1,6 +1,6 @@
-const state = { entries: [], filtered: [], page: 1, pageSize: 5 };
+const state = { entries: [], highlights: [], filtered: [], page: 1, pageSize: 5 };
 const els = {
-  entries: document.querySelector('#entries'), search: document.querySelector('#searchInput'),
+  entries: document.querySelector('#entries'), highlights: document.querySelector('#highlights'), search: document.querySelector('#searchInput'),
   pageSize: document.querySelector('#pageSize'), prev: document.querySelector('#prevPage'),
   next: document.querySelector('#nextPage'), pageInfo: document.querySelector('#pageInfo'),
   entryCount: document.querySelector('#entryCount'), latestDate: document.querySelector('#latestDate')
@@ -12,6 +12,18 @@ function applyFilter() {
   const q = els.search.value.trim().toLowerCase();
   state.filtered = !q ? [...state.entries] : state.entries.filter(e => [e.date,e.title,e.summary,...(e.tags||[]),...(e.items||[])].join(' ').toLowerCase().includes(q));
   state.page = 1; render();
+}
+function renderHighlights() {
+  els.highlights.innerHTML = state.highlights.map((item, index) => `
+    <article class="highlight-card ${index === 0 ? 'featured-highlight' : ''}">
+      <div class="highlight-date">${dateLabel(item.date)}</div>
+      <h3>${escapeHtml(item.title)}</h3>
+      <p>${escapeHtml(item.summary)}</p>
+      <div class="highlight-footer">
+        <span>${escapeHtml(item.accent || 'milestone')}</span>
+        <div class="mini-tags">${(item.tags||[]).slice(0,3).map(tag => `<em>${escapeHtml(tag)}</em>`).join('')}</div>
+      </div>
+    </article>`).join('');
 }
 function render() {
   const totalPages = Math.max(1, Math.ceil(state.filtered.length / state.pageSize));
@@ -31,14 +43,19 @@ function render() {
   els.prev.disabled = state.page <= 1;
   els.next.disabled = state.page >= totalPages;
 }
+async function fetchJson(path) {
+  const res = await fetch(path, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Could not load ${path}`);
+  return res.json();
+}
 async function init() {
-  const res = await fetch('data/entries.json', { cache: 'no-store' });
-  const entries = await res.json();
+  const [entries, highlights] = await Promise.all([fetchJson('data/entries.json'), fetchJson('data/highlights.json')]);
   state.entries = entries.sort((a,b) => b.date.localeCompare(a.date));
+  state.highlights = highlights.sort((a,b) => b.date.localeCompare(a.date));
   state.filtered = [...state.entries];
   els.entryCount.textContent = state.entries.length;
   els.latestDate.textContent = state.entries[0]?.date || '—';
-  render();
+  renderHighlights(); render();
 }
 els.search.addEventListener('input', applyFilter);
 els.pageSize.addEventListener('change', () => { state.pageSize = Number(els.pageSize.value); state.page = 1; render(); });
