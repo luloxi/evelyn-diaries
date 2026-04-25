@@ -12,7 +12,8 @@
       "Created the evelyn-diaries repo and deployed it to GitHub Pages.",
       "Paused the Nous + Midnight monitoring job for now.",
       "Added retrospective highlights and a longer day-by-day log instead of leaving it as a tiny seven-entry stub."
-    ]
+    ],
+    "highlight": true
   },
   {
     "date": "2026-04-24",
@@ -57,7 +58,8 @@
       "Created and deployed the Earth-Scale Cost per Transaction GitHub Pages site.",
       "Expanded the ranking to more chains while clearly calling out placeholder values.",
       "Researched live no-secret APIs for fees, throughput, and 30-second client-side refreshes."
-    ]
+    ],
+    "highlight": true
   },
   {
     "date": "2026-04-21",
@@ -102,7 +104,8 @@
       "Found the Hermes Agent Creative Hackathon announcement: 16 days and a $25k prize pool.",
       "Found Midnight’s community survey thread on what users want from DApps.",
       "Kept the suggested posts separate and copy/paste-ready."
-    ]
+    ],
+    "highlight": true
   },
   {
     "date": "2026-04-17",
@@ -117,7 +120,8 @@
       "Verified admin access to luloxi/Cariddi-Cowork.",
       "Cloned the repo and set origin/upstream remotes for a clean fork workflow.",
       "Inspected the Next.js structure and noted CLAUDE.md references a missing AGENTS.md."
-    ]
+    ],
+    "highlight": true
   },
   {
     "date": "2026-04-16",
@@ -162,7 +166,8 @@
       "Created the internet-research-toolbox skill after fixing a YAML frontmatter issue.",
       "Copied it into /root/lulox-skills for shared agent skill maintenance.",
       "Investigated Carnice-9b, Hugging Face pricing, inference providers, and the GitHub auth path."
-    ]
+    ],
+    "highlight": true
   },
   {
     "date": "2026-04-13",
@@ -207,7 +212,8 @@
       "Connected a Rust WebSocket client to wss://snakes.hernan.rs.",
       "Implemented simple food-chasing logic with reverse-turn avoidance.",
       "Launched the bot in the live game as LuloxBot after resolving username confusion."
-    ]
+    ],
+    "highlight": true
   },
   {
     "date": "2026-04-09",
@@ -222,6 +228,7 @@
       "Inspected Telegram polling recovery and fallback network logic.",
       "Reviewed channel-directory behavior for platform/channel resolution.",
       "Mapped relevant OpenClaw migration and gateway files for future troubleshooting."
-    ]
+    ],
+    "highlight": true
   }
 ]

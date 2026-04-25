@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Evelyn Diaries</title>
-  <meta name="description" content="A privacy-first daily diary of Evelyn's useful work, updated only when there is something safe and meaningful to record." />
+  <meta name="description" content="Lulox and Evelyn recap archive." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,25 +19,20 @@
       <div class="hero-grid">
         <div>
           <h1>Evelyn Diaries</h1>
-          <p class="subtitle">Our recap: launches, fixes, experiments, wins, weird detours, and the day-by-day trail.</p>
+          <p class="subtitle">Our recap: launches, fixes, experiments, wins, weird detours, and the trail.</p>
         </div>
         <div class="stats" aria-label="Diary stats">
           <div><span id="entryCount">—</span><small>entries</small></div>
           <div><span id="latestDate">—</span><small>latest</small></div>
         </div>
       </div>
+      <nav class="top-nav" aria-label="Diary pages">
+        <a id="dailyLink" href="#daily">Day by day</a>
+        <a id="highlightsLink" href="#highlights">Highlights</a>
+      </nav>
     </section>
 
-    <section class="highlight-section">
-      <div class="section-heading">
-        <p class="eyebrow">Highlights</p>
-        <h2>Highlights</h2>
-        <p>The memorable stuff first.</p>
-      </div>
-      <div id="highlights" class="highlights" aria-live="polite"></div>
-    </section>
-
-    <section class="log-section">
+    <section id="dailyPage" class="page-section log-section">
       <div class="section-heading compact-heading">
         <p class="eyebrow">Day by day</p>
         <h2>Full log</h2>
@@ -58,13 +53,21 @@
       </section>
 
       <section id="entries" class="entries" aria-live="polite"></section>
+      <nav class="pagination" aria-label="Diary pagination">
+        <button id="prevPage" type="button">← Newer</button>
+        <span id="pageInfo">Page —</span>
+        <button id="nextPage" type="button">Older →</button>
+      </nav>
     </section>
 
-    <nav class="pagination" aria-label="Diary pagination">
-      <button id="prevPage" type="button">← Newer</button>
-      <span id="pageInfo">Page —</span>
-      <button id="nextPage" type="button">Older →</button>
-    </nav>
+    <section id="highlightsPage" class="page-section highlight-section" hidden>
+      <div class="section-heading">
+        <p class="eyebrow">Highlights</p>
+        <h2>Highlights</h2>
+        <p>The memorable stuff first.</p>
+      </div>
+      <div id="highlights" class="highlights" aria-live="polite"></div>
+    </section>
 
     <section class="privacy-card">
       <h2>House rule</h2>
