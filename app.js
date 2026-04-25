@@ -1,4 +1,4 @@
-const state = { entries: [], highlights: [], filtered: [], page: 1, pageSize: 5 };
+const state = { entries: [], highlights: [], filtered: [], page: 1, pageSize: 10 };
 const els = {
   entries: document.querySelector('#entries'), highlights: document.querySelector('#highlights'), search: document.querySelector('#searchInput'),
   pageSize: document.querySelector('#pageSize'), prev: document.querySelector('#prevPage'),

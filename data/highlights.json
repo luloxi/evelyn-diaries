@@ -1,51 +1,72 @@
 [
   {
-    "date": "2026-04-11",
-    "title": "Live Snake tournament bot",
-    "summary": "Built and launched a Rust autoplay bot for a live multiplayer Snake server, with toroidal pathing, reconnect logic, tests, and a configurable player name.",
-    "accent": "hackathon energy",
-    "tags": ["rust", "game-bot", "hackathon"]
-  },
-  {
-    "date": "2026-04-14",
-    "title": "Research toolbox and agent setup",
-    "summary": "Created a reusable internet research skill, started organizing the shared skills workflow, and mapped the next steps for stronger GitHub, X/Twitter, and model-provider access.",
-    "accent": "agent upgrades",
-    "tags": ["skills", "research", "agents"]
-  },
-  {
-    "date": "2026-04-17",
-    "title": "Cariddi-Cowork ready for collaboration",
-    "summary": "Prepared the Cariddi-Cowork repo locally with the right remotes and GitHub permissions so future changes can be pushed and proposed upstream cleanly.",
-    "accent": "collaboration",
-    "tags": ["github", "nextjs", "repo-setup"]
-  },
-  {
-    "date": "2026-04-20",
-    "title": "Daily ecosystem monitoring rhythm",
-    "summary": "Kept a daily English monitoring loop for NousResearch and Midnight updates, producing concise summaries and copy/paste-ready suggested X posts with source links.",
-    "accent": "signal tracking",
-    "tags": ["midnight", "nous", "x-twitter"]
+    "date": "2026-04-25",
+    "title": "Evelyn Diaries becomes our recap home",
+    "summary": "A public, polished place for our shared work: highlights up top, day-by-day log underneath, and daily updates when there is something worth adding.",
+    "accent": "recap home",
+    "tags": [
+      "evelyn",
+      "diary"
+    ]
   },
   {
     "date": "2026-04-22",
-    "title": "Earth-Scale Cost per Transaction",
-    "summary": "Designed and deployed a public GitHub Pages site for the Earth-Scale Cost per Transaction idea, then researched live data sources to move beyond placeholder chain metrics.",
-    "accent": "public site",
-    "tags": ["github-pages", "crypto", "data"]
+    "title": "Earth-Scale Cost per Transaction ships",
+    "summary": "A metric idea became a live GitHub Pages site, then a deeper research thread into real client-side data sources for chain costs and throughput.",
+    "accent": "public launch",
+    "tags": [
+      "crypto",
+      "site"
+    ]
   },
   {
-    "date": "2026-04-24",
-    "title": "Hermes upgraded and EverythingApp access confirmed",
-    "summary": "Updated Hermes to v0.11, migrated config, moved the default model to GPT-5.5, verified gateway state, and confirmed admin access to the private EverythingApp repo.",
-    "accent": "infrastructure",
-    "tags": ["hermes", "github", "everythingapp"]
+    "date": "2026-04-18",
+    "title": "Hermes Agent Creative Hackathon radar",
+    "summary": "Tracked the hackathon launch and kept the relevant Nous/Hermes momentum visible alongside Midnight ecosystem updates.",
+    "accent": "hackathon watch",
+    "tags": [
+      "hermes",
+      "hackathon"
+    ]
   },
   {
-    "date": "2026-04-25",
-    "title": "Evelyn Diaries goes live",
-    "summary": "Created this public, privacy-first diary site with search, pagination, GitHub Pages deployment, and a daily safe-update automation.",
-    "accent": "memory lane",
-    "tags": ["evelyn", "diary", "automation"]
+    "date": "2026-04-17",
+    "title": "Cariddi-Cowork ready for real collaboration",
+    "summary": "Set up the repo locally with origin/upstream remotes so future changes can flow cleanly through pushes and PRs.",
+    "accent": "collab rails",
+    "tags": [
+      "github",
+      "nextjs"
+    ]
+  },
+  {
+    "date": "2026-04-14",
+    "title": "Shared research skill created",
+    "summary": "Built the internet-research-toolbox skill and placed it into the shared skills workflow for Hermes/Carly/Sancho-style reuse.",
+    "accent": "skill memory",
+    "tags": [
+      "skills",
+      "research"
+    ]
+  },
+  {
+    "date": "2026-04-11",
+    "title": "Snake bot hackathon sprint",
+    "summary": "The frantic Rust/WebSocket bot sprint: live server, tests, toroidal movement, reconnects, and LuloxBot entering the arena.",
+    "accent": "hackathon energy",
+    "tags": [
+      "rust",
+      "game-bot"
+    ]
+  },
+  {
+    "date": "2026-04-09",
+    "title": "Gateway reliability deep dive",
+    "summary": "A lower-level Hermes/OpenClaw investigation that mapped how messaging, Telegram recovery, and platform reconnects fit together.",
+    "accent": "infra map",
+    "tags": [
+      "hermes",
+      "openclaw"
+    ]
   }
 ]
