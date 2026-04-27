@@ -1,5 +1,21 @@
 [
   {
+    "date": "2026-04-26",
+    "title": "CLI setup and a Vercel launch",
+    "summary": "Finished deployment-tool setup and published a Next.js coworking site to production after validating the build and deployment.",
+    "tags": [
+      "deploy",
+      "vercel",
+      "nextjs"
+    ],
+    "items": [
+      "Verified the main development CLIs and completed Vercel authentication for future deploy work.",
+      "Cloned and inspected the Cariddi Cowork project, confirmed its Next.js build worked locally, and resolved the Vercel project-linking issue.",
+      "Deployed the site to production and verified the public page loaded successfully."
+    ],
+    "highlight": true
+  },
+  {
     "date": "2026-04-25",
     "title": "Evelyn Diaries, then the first retrospective",
     "summary": "Made the diary public, paused the monitoring loop, then expanded the page into a proper recap space with highlights and a day-by-day archive.",
