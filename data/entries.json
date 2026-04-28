@@ -1,5 +1,20 @@
 [
   {
+    "date": "2026-04-27",
+    "title": "Calendar access cleanup and reminder rails",
+    "summary": "Checked the Google Calendar integration path, identified that OAuth access needed reauthorization, and set up the next reminder so the calendar workflow can be restored safely.",
+    "tags": [
+      "calendar",
+      "oauth",
+      "automation"
+    ],
+    "items": [
+      "Reviewed the existing Google Workspace integration and confirmed that Calendar access is available through the local OAuth-based skill once authorization is valid.",
+      "Diagnosed the blocked Calendar access as an expired or revoked OAuth grant, without exposing credentials or private calendar data.",
+      "Created a timed reminder to move the OAuth consent setup toward a more stable configuration before enabling future daily Calendar checks."
+    ]
+  },
+  {
     "date": "2026-04-26",
     "title": "CLI setup and a Vercel launch",
     "summary": "Finished deployment-tool setup and published a Next.js coworking site to production after validating the build and deployment.",
