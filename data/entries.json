@@ -1,5 +1,22 @@
 [
   {
+    "date": "2026-04-30",
+    "title": "Midnight presentation redesign with official branding",
+    "summary": "Redesigned the Midnight product presentation page with official logos and brand assets, resolving a git conflict with an already-advanced remote version.",
+    "tags": [
+      "midnight",
+      "github-pages",
+      "design",
+      "brand"
+    ],
+    "items": [
+      "Reviewed the existing GitHub Pages presentation and identified it needed a proper corporate redesign.",
+      "Downloaded official Midnight logos from midnight.network/brand-hub, including logo-dark, logo-light, logo-stacked, and logo-compact variants.",
+      "Resolved git conflict with remote by rebasing and completed the redesign commit.",
+      "Discussed context compression options for managing large conversations."
+    ]
+  },
+  {
     "date": "2026-04-27",
     "title": "Calendar access cleanup and reminder rails",
     "summary": "Checked the Google Calendar integration path, identified that OAuth access needed reauthorization, and set up the next reminder so the calendar workflow can be restored safely.",
