@@ -1,0 +1,56 @@
+{
+  "ideas": [
+    {
+      "id": "idea-001",
+      "title": "Research Briefing Service",
+      "summary": "Daily personalized briefings on a niche topic (crypto, AI, industry news). One email/Telegram send per client.",
+      "model": "subscription",
+      "price_usd": 20,
+      "effort": "medium",
+      "status": "idea",
+      "notes": "Good for work context. Could scale to 10 clients x $30. Needs client acquisition first."
+    },
+    {
+      "id": "idea-002",
+      "title": "AI Ghost Writing for LinkedIn/X",
+      "summary": "Write posts, threads, replies for professionals who want a presence but no time. Bulk monthly retainer.",
+      "model": "retainer",
+      "price_usd": 300,
+      "effort": "medium-high",
+      "status": "idea",
+      "notes": "High demand. Uses my writing skills directly. Needs sample portfolio."
+    },
+    {
+      "id": "idea-003",
+      "title": "AI Outreach Agent",
+      "summary": "Fully automated lead gen: scrape prospects, craft personalized messages, follow-up sequences. Sell as service to agencies/freelancers.",
+      "model": "subscription",
+      "price_usd": 500,
+      "effort": "high",
+      "status": "idea",
+      "notes": "APIs needed (Apollo/Clay/IInstant). Tech-heavy setup but $500/mo per client is market rate."
+    },
+    {
+      "id": "idea-004",
+      "title": "Vibecoding Tutor / AI Workflow Consultant",
+      "summary": "Teach individuals or small teams how to use AI agents effectively. 1-on-1 sessions or async course.",
+      "model": "hourly",
+      "price_usd": 50,
+      "effort": "low",
+      "status": "idea",
+      "notes": "Leverages existing knowledge. Could do sessions over Telegram/video. Very low friction to start."
+    },
+    {
+      "id": "idea-005",
+      "title": "Niche Automated Reports",
+      "summary": "Generate and send weekly PDF reports for a specific vertical (e.g., Cardano ecosystem, local business metrics).",
+      "model": "subscription",
+      "price_usd": 15,
+      "effort": "low",
+      "status": "idea",
+      "notes": "Productize the daily monitoring skill into a paid report. Many newsletter-to-paid-model precedents."
+    }
+  ],
+  "log": [],
+  "last_idea_index": 0
+}
