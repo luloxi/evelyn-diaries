@@ -1,10 +1,14 @@
-const state = { entries: [], highlights: [], highlightedKeys: new Set(), filtered: [], page: 1, pageSize: 10 };
+const state = { entries: [], highlights: [], highlightedKeys: new Set(), filtered: [], page: 1, pageSize: 10, monetization: { ideas: [], log: [], last_idea_index: 0 } };
 const els = {
-  entries: document.querySelector('#entries'), highlights: document.querySelector('#highlights'), search: document.querySelector('#searchInput'),
+  entries: document.querySelector('#entries'), highlights: document.querySelector('#highlights'),
+  monetizationIdeas: document.querySelector('#monetizationIdeas'), monetizationLog: document.querySelector('#monetizationLog'),
+  search: document.querySelector('#searchInput'),
   pageSize: document.querySelector('#pageSize'), prev: document.querySelector('#prevPage'), next: document.querySelector('#nextPage'), pageInfo: document.querySelector('#pageInfo'),
   entryCount: document.querySelector('#entryCount'), latestDate: document.querySelector('#latestDate'),
   dailyPage: document.querySelector('#dailyPage'), highlightsPage: document.querySelector('#highlightsPage'),
-  dailyLink: document.querySelector('#dailyLink'), highlightsLink: document.querySelector('#highlightsLink')
+  monetizationPage: document.querySelector('#monetizationPage'),
+  dailyLink: document.querySelector('#dailyLink'), highlightsLink: document.querySelector('#highlightsLink'),
+  monetizationLink: document.querySelector('#monetizationLink')
 };
 const fmt = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 function escapeHtml(value = '') { return String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
@@ -13,12 +17,20 @@ function keyFor(item) { return `${item.date}|${(item.title || '').toLowerCase()}
 function isHighlighted(entry) { return entry.highlight || state.highlightedKeys.has(keyFor(entry)) || state.highlights.some(h => h.date === entry.date && entry.title.toLowerCase().includes(h.title.split(' ')[0].toLowerCase())); }
 function setView(view) {
   const showHighlights = view === 'highlights';
-  els.dailyPage.hidden = showHighlights;
-  els.highlightsPage.hidden = !showHighlights;
-  els.dailyLink.classList.toggle('active', !showHighlights);
+  const showMonetization = view === 'monetization';
+  els.dailyPage.hidden = showHighlights || showMonetization;
+  els.highlightsPage.hidden = !showHighlights && !showMonetization;
+  els.monitizationPage.hidden = !showMonetization;
+  els.dailyLink.classList.toggle('active', !showHighlights && !showMonetization);
   els.highlightsLink.classList.toggle('active', showHighlights);
+  els.monitizationLink.classList.toggle('active', showMonetization);
 }
-function syncRoute() { setView(location.hash.replace('#','') === 'highlights' ? 'highlights' : 'daily'); }
+function syncRoute() {
+  const hash = location.hash.replace('#','');
+  if (hash === 'highlights') setView('highlights');
+  else if (hash === 'monetization') setView('monetization');
+  else setView('daily');
+}
 function applyFilter() {
   const q = els.search.value.trim().toLowerCase();
   state.filtered = !q ? [...state.entries] : state.entries.filter(e => [e.date,e.title,e.summary,...(e.tags||[]),...(e.items||[])].join(' ').toLowerCase().includes(q));
@@ -62,14 +74,101 @@ async function fetchJson(path) {
   return res.json();
 }
 async function init() {
-  const [entries, highlights] = await Promise.all([fetchJson('data/entries.json'), fetchJson('data/highlights.json')]);
+  const [entries, highlights, monetization] = await Promise.all([
+    fetchJson('data/entries.json'),
+    fetchJson('data/highlights.json'),
+    fetchJson('data/monetization.json').catch(() => ({ ideas: [], log: [], last_idea_index: 0 }))
+  ]);
   state.entries = entries.sort((a,b) => b.date.localeCompare(a.date));
   state.highlights = highlights.sort((a,b) => b.date.localeCompare(a.date));
   state.highlightedKeys = new Set(state.highlights.map(keyFor));
   state.filtered = [...state.entries];
+  state.monetization = monetization;
   els.entryCount.textContent = state.entries.length;
   els.latestDate.textContent = state.entries[0]?.date || '—';
-  renderHighlights(); render(); syncRoute();
+  renderHighlights();
+  renderMonetization();
+  render();
+  syncRoute();
+}
+function renderMonetization() {
+  const { ideas, log, last_idea_index: idx } = state.monetization;
+  const currentIdea = ideas[idx % Math.max(ideas.length, 1)];
+  els.monitizationIdeas.innerHTML = ideas.length ? ideas.map(idea => `
+    <article class="monetization-card ${idea.id === currentIdea?.id ? 'current-idea' : ''}">
+      <div class="idea-header">
+        <h3>${escapeHtml(idea.title)}</h3>
+        <span class="idea-price">${idea.price_usd ? '~$' + idea.price_usd + '/mo' : ''}</span>
+      </div>
+      <p>${escapeHtml(idea.summary)}</p>
+      <div class="idea-meta">
+        <span class="idea-model">${escapeHtml(idea.model || '')}</span>
+        <span class="idea-effort ${idea.effort}">${escapeHtml(idea.effort || '')}</span>
+      </div>
+      ${idea.notes ? `<p class="idea-notes">${escapeHtml(idea.notes)}</p>` : ''}
+    </article>`).join('') : '<div class="empty">No monetization ideas yet — check back soon.</div>';
+  els.monitizationLog.innerHTML = log.length ? `<h4>Delivery log</h4><ul>${log.slice(-5).reverse().map(l => `<li><time>${l.delivered_at ? l.delivered_at.split('T')[0] : '—'}</time>: ${escapeHtml(l.idea_title || l.idea_id || '—')}</li>`).join('')}</ul>` : '';
+}
+function render() {
+  const totalPages = Math.max(1, Math.ceil(state.filtered.length / state.pageSize));
+  state.page = Math.min(state.page, totalPages);
+  const start = (state.page - 1) * state.pageSize;
+  const pageEntries = state.filtered.slice(start, start + state.pageSize);
+  els.entries.innerHTML = pageEntries.length ? pageEntries.map(entry => {
+    const hot = isHighlighted(entry);
+    return `<article class="entry ${hot ? 'highlighted-entry' : ''}">
+      <div class="entry-header">
+        <div><h2>${escapeHtml(entry.title)} ${hot ? '<span class="highlight-badge">Highlight</span>' : ''}</h2><p>${escapeHtml(entry.summary)}</p></div>
+        <time datetime="${escapeHtml(entry.date)}">${dateLabel(entry.date)}</time>
+      </div>
+      ${(entry.items||[]).length ? `<ul>${entry.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : ''}
+      ${(entry.tags||[]).length ? `<div class="tags">${entry.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}</div>` : ''}
+    </article>`;
+  }).join('') : '<div class="empty">No diary entries match that search.</div>';
+  els.pageInfo.textContent = `Page ${state.page} of ${totalPages}`;
+  els.prev.disabled = state.page <= 1;
+  els.next.disabled = state.page >= totalPages;
+}
+async function fetchJson(path) {
+  const res = await fetch(path, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Could not load ${path}`);
+  return res.json();
+}
+async function init() {
+  const [entries, highlights, monetization] = await Promise.all([
+    fetchJson('data/entries.json'),
+    fetchJson('data/highlights.json'),
+    fetchJson('data/monetization.json').catch(() => ({ ideas: [], log: [], last_idea_index: 0 }))
+  ]);
+  state.entries = entries.sort((a,b) => b.date.localeCompare(a.date));
+  state.highlights = highlights.sort((a,b) => b.date.localeCompare(a.date));
+  state.highlightedKeys = new Set(state.highlights.map(keyFor));
+  state.filtered = [...state.entries];
+  state.monetization = monetization;
+  els.entryCount.textContent = state.entries.length;
+  els.latestDate.textContent = state.entries[0]?.date || '—';
+  renderHighlights();
+  renderMonetization();
+  render();
+  syncRoute();
+}
+function renderMonetization() {
+  const { ideas, log, last_idea_index: idx } = state.monetization;
+  const currentIdea = ideas[idx % Math.max(ideas.length, 1)];
+  els.monitizationIdeas.innerHTML = ideas.length ? ideas.map(idea => `
+    <article class="monetization-card ${idea.id === currentIdea?.id ? 'current-idea' : ''}">
+      <div class="idea-header">
+        <h3>${escapeHtml(idea.title)}</h3>
+        <span class="idea-price">${idea.price_usd ? '~$' + idea.price_usd + '/mo' : ''}</span>
+      </div>
+      <p>${escapeHtml(idea.summary)}</p>
+      <div class="idea-meta">
+        <span class="idea-model">${escapeHtml(idea.model || '')}</span>
+        <span class="idea-effort ${idea.effort}">${escapeHtml(idea.effort || '')}</span>
+      </div>
+      ${idea.notes ? `<p class="idea-notes">${escapeHtml(idea.notes)}</p>` : ''}
+    </article>`).join('') : '<div class="empty">No monetization ideas yet — check back soon.</div>';
+  els.monitizationLog.innerHTML = log.length ? `<h4>Delivery log</h4><ul>${log.slice(-5).reverse().map(l => `<li><time>${l.delivered_at ? l.delivered_at.split('T')[0] : '—'}</time>: ${escapeHtml(l.idea_title || l.idea_id || '—')}</li>`).join('')}</ul>` : '';
 }
 els.search.addEventListener('input', applyFilter);
 els.pageSize.addEventListener('change', () => { state.pageSize = Number(els.pageSize.value); state.page = 1; render(); });
