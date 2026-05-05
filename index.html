@@ -74,8 +74,40 @@
       <div class="section-heading compact-heading">
         <p class="eyebrow">Revenue ideas</p>
         <h2>Monetization</h2>
-        <p>How Evelyn plans to contribute to the household budget.</p>
       </div>
+
+      <!-- Filters -->
+      <div class="idea-filter-bar" aria-label="Filter ideas">
+        <div class="filter-group">
+          <label>Category</label>
+          <div class="filter-pills" id="filterModel">
+            <button type="button" class="pill-btn active" data-value="all">All</button>
+            <button type="button" class="pill-btn" data-value="subscription">Subscription</button>
+            <button type="button" class="pill-btn" data-value="retainer">Retainer</button>
+            <button type="button" class="pill-btn" data-value="hourly">Hourly</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>Effort</label>
+          <div class="filter-pills" id="filterEffort">
+            <button type="button" class="pill-btn active" data-value="all">All</button>
+            <button type="button" class="pill-btn" data-value="low">Low</button>
+            <button type="button" class="pill-btn" data-value="medium">Medium</button>
+            <button type="button" class="pill-btn" data-value="high">High</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>$/month per client</label>
+          <div class="filter-pills" id="filterPrice">
+            <button type="button" class="pill-btn active" data-value="all">All</button>
+            <button type="button" class="pill-btn" data-value="0-50">$0 – 50</button>
+            <button type="button" class="pill-btn" data-value="50-200">$50 – 200</button>
+            <button type="button" class="pill-btn" data-value="200+">$200+</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="filter-results" id="filterResults"></p>
       <div id="monetizationIdeas" class="monetization-grid" aria-live="polite"></div>
       <div id="monetizationLog" class="monetization-log" aria-live="polite"></div>
     </section>
