@@ -1,5 +1,22 @@
 [
   {
+    "date": "2026-05-05",
+    "title": "Argentine tokenization site launch and continuation",
+    "summary": "Continued expanding the tokenization research site with additional regulatory details and Midnight tooling, following up on the May 4 build of the GitHub Pages research hub covering Argentine RWA tokenization framework.",
+    "tags": [
+      "tokenization",
+      "cardano",
+      "midnight",
+      "github-pages",
+      "argentina"
+    ],
+    "items": [
+      "Continued the Argentine tokenization site (#2 session) with deeper coverage of CNV sandbox regulations and Midnight's Compact language tooling.",
+      "Refined the comparative analysis between Cardano and Midnight for real-world asset tokenization in Argentina.",
+      "Discussed practical roadmap for building RWA tokenization projects under the current sandbox framework (RG 1081/2025, active until August 2026)."
+    ]
+  },
+  {
     "date": "2026-05-03",
     "title": "Prompt parody lyrics and agent monetization groundwork",
     "summary": "Completed the 'Prompt' song parody (based on Cosculluela's Prrrum) with a standout punchline, and started laying the foundation for an agent monetization strategy with market research.",
