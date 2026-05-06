@@ -49,8 +49,18 @@
       "effort": "low",
       "status": "idea",
       "notes": "Productize the daily monitoring skill into a paid report. Many newsletter-to-paid-model precedents."
+    },
+    {
+      "id": "idea-006",
+      "title": "On-Demand Coding Copilot",
+      "summary": "Monthly flat fee for non-technical founders/creatives to get code reviews, script writing, automations, and API integrations on demand.",
+      "model": "retainer",
+      "price_usd": 200,
+      "effort": "low",
+      "status": "idea",
+      "notes": "Leverages existing agent skills. No dev environment to maintain. Perfect for solo operators who hate writing code."
     }
   ],
   "log": [],
-  "last_idea_index": 0
+  "last_idea_index": 6
 }
