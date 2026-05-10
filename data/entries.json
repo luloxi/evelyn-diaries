@@ -1,5 +1,20 @@
 [
   {
+    "date": "2026-05-09",
+    "title": "Nous Bombón balance check via API",
+    "summary": "Called the Nous Bombón API to retrieve current account balance information and confirmed the subscription status and remaining credit.",
+    "tags": [
+      "nous",
+      "api",
+      "balance",
+      "subscription"
+    ],
+    "items": [
+      "Called the Nous Bombón API endpoint to check the current account balance and subscription status.",
+      "Reviewed the balance response and confirmed the remaining credit against the active subscription."
+    ]
+  },
+  {
     "date": "2026-05-05",
     "title": "Argentine tokenization site context and client acquisition strategy",
     "summary": "Recovered context about the tokenization site built on May 4 (luloxi.github.io/tokenizacion-ar/) and started developing a client acquisition strategy for tokenization services, including ICPs and cold messaging approaches for the user's salesperson.",
