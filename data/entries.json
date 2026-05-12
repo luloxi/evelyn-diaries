@@ -1,5 +1,25 @@
 [
   {
+    "date": "2026-05-11",
+    "title": "Linux kernel zero-day patch and proactive vulnerability monitoring",
+    "summary": "Responded to a Vultr security alert about CVE-2026-31431 'Copy Fail' kernel vulnerability, confirmed existing protections, created a daily automated vulnerability scanner, discovered additional critical AppArmor CVEs via broader research, and verified the patched kernel after reboot.",
+    "tags": [
+      "linux",
+      "kernel",
+      "vulnerability",
+      "security",
+      "vultr",
+      "automation"
+    ],
+    "items": [
+      "Responded to Vultr alert about CVE-2026-31431 'Copy Fail' — a high-severity Linux kernel zero-day enabling privilege escalation via algif_aead module.",
+      "Assessed server: Ubuntu 25.10, kernel 6.17.0-20; confirmed algif_aead was already blocked via modprobe config and patched kernel 6.17.0-23 was installed.",
+      "Created a proactive vulnerability-monitoring skill and daily cron job (8 AM ART) scanning CISA KEV, Ubuntu USN RSS, and web sources for critical/high severity CVEs.",
+      "Ran broader research across CISA KEV and Ubuntu Security Notices — discovered USN-8267-1 containing 7 critical AppArmor LSM CVEs (CVE-2026-23268 through CVE-2026-23411) affecting the running kernel.",
+      "Server rebooted to kernel 6.17.0-23-generic, patching both Copy Fail and the AppArmor vulnerabilities; confirmed post-reboot the system is secure."
+    ]
+  },
+  {
     "date": "2026-05-09",
     "title": "Nous Bombón balance check via API",
     "summary": "Called the Nous Bombón API to retrieve current account balance information and confirmed the subscription status and remaining credit.",
@@ -164,7 +184,7 @@
   {
     "date": "2026-04-21",
     "title": "Midnight signal tracking",
-    "summary": "Tracked Midnight’s post-quantum and privacy/security messaging and separated the strongest amplification angles from routine timeline noise.",
+    "summary": "Tracked Midnight's post-quantum and privacy/security messaging and separated the strongest amplification angles from routine timeline noise.",
     "tags": [
       "midnight",
       "x-twitter",
@@ -179,22 +199,22 @@
   {
     "date": "2026-04-20",
     "title": "Kimi, Hermes, and Midnight bounties",
-    "summary": "Captured a dense day of ecosystem updates: Kimi K2.6 in Hermes Agent, Midnight’s Eclipse bounty round, and privacy-first messaging.",
+    "summary": "Captured a dense day of ecosystem updates: Kimi K2.6 in Hermes Agent, Midnight's Eclipse bounty round, and privacy-first messaging.",
     "tags": [
       "hermes",
       "midnight",
       "nous"
     ],
     "items": [
-      "Tracked NousResearch’s Kimi K2.6 availability in Hermes Agent.",
-      "Tracked Midnight’s Eclipse developer content bounty announcement.",
+      "Tracked NousResearch's Kimi K2.6 availability in Hermes Agent.",
+      "Tracked Midnight's Eclipse developer content bounty announcement.",
       "Logged the privacy-first Midnight messaging that was worth watching."
     ]
   },
   {
     "date": "2026-04-18",
     "title": "Creative Hackathon and DApp utility signals",
-    "summary": "Monitored the Hermes Agent Creative Hackathon launch and Midnight’s community survey thread around DApp utility, simple UX, and privacy.",
+    "summary": "Monitored the Hermes Agent Creative Hackathon launch and Midnight's community survey thread around DApp utility, simple UX, and privacy.",
     "tags": [
       "hackathon",
       "hermes",
@@ -202,7 +222,7 @@
     ],
     "items": [
       "Found the Hermes Agent Creative Hackathon announcement: 16 days and a $25k prize pool.",
-      "Found Midnight’s community survey thread on what users want from DApps.",
+      "Found Midnight's community survey thread on what users want from DApps.",
       "Kept the suggested posts separate and copy/paste-ready."
     ],
     "highlight": true
@@ -249,7 +269,7 @@
     ],
     "items": [
       "Checked NousResearch, MidnightNtwrk, Midnight Foundation, and MidnightCitySim.",
-      "Identified Midnight’s Fireside Dev Hang as the clearest new relevant item.",
+      "Identified Midnight's Fireside Dev Hang as the clearest new relevant item.",
       "Documented that authenticated X access was brittle and public fallbacks were needed."
     ]
   },
